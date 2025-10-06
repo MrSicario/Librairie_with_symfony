@@ -7,7 +7,7 @@
 
 <div align="center">
   
-  ![Capture d'écran de l'application](https://via.placeholder.com/800x400/667eea/ffffff?text=Librairie+Scolaire+-+Capture+d'écran)
+  ![Capture d'écran de l'application](app.png)
   
   *✨ Interface moderne et responsive de la plateforme*
   
