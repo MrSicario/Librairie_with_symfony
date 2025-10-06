@@ -1,6 +1,6 @@
 # 📚 Librairie Scolaire - Plateforme d'Échange de Livres
 
-# 👨‍💻 Developpeur : MAHAFALE Mahaisoa 
+### 👨‍💻 Developpeur : MAHAFALE Mahaisoa 
 
 - Email: mahahesjr@email.com
 
