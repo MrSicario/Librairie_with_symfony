@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre{% endblock %}
+
+{% block body %}
+    <h1>Livre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ livre.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ livre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ livre.classe }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ livre.etat }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ livre.ville }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+     {# FORMULAIRE DE DEMANDE #}
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3>Demander ce livre</h3>
+        </div>
+        <div class="card-body">
+            {{ form_start(demande_form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(demande_form.type, {
+                            'label': 'Type de demande',
+                            'attr': {'class': 'form-select'}
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(demande_form.nom_eleve, {
+                            'label': 'Votre nom',
+                            'attr': {'class': 'form-control', 'placeholder': 'Votre nom complet'}
+                        }) }}
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        {{ form_row(demande_form.email_eleve, {
+                            'label': 'Votre email',
+                            'attr': {'class': 'form-control', 'placeholder': 'votre.email@exemple.com'}
+                        }) }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Envoyer la demande</button>
+            {{ form_end(demande_form) }}
+        </div>
+    </div>
+
+
+    <a href="{{ path('app_livre_index') }}">back to list</a>
+
+    <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>
+
+    {{ include('livre/_delete_form.html.twig') }}
+{% endblock %}

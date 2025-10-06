@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Librairie Scolaire - Échangez vos livres{% endblock %}
+
+{% block body %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="hero-title">📚 Librairie Scolaire</h1>
+                <p class="hero-subtitle">Échangez, empruntez, partagez vos livres scolaires entre élèves</p>
+                <p class="lead mb-4">Rejoignez notre communauté d'élèves solidaires et donnez une seconde vie à vos manuels scolaires</p>
+                
+<div class="d-flex gap-3 justify-content-center flex-wrap">
+    <a href="/livre" class="btn btn-light btn-lg px-4 py-3 fw-bold text-decoration-none">
+        <i class="fas fa-book-open me-2"></i>Voir les livres disponibles
+    </a>
+    
+    <a href="/livre/new" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold text-decoration-none border-2">
+        <i class="fas fa-plus me-2"></i>Ajouter un livre
+    </a>
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col">
+                <h2 class="display-4 fw-bold">Pourquoi nous choisir ?</h2>
+                <p class="lead">Une plateforme simple, sécurisée et solidaire</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-exchange-alt fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="card-title">🔄 Échanges Faciles</h4>
+                        <p class="card-text">Trouvez rapidement les livres dont vous avez besoin et proposez les vôtres en quelques clics</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-map-marker-alt fa-3x text-success"></i>
+                        </div>
+                        <h4 class="card-title">📍 Proche de Vous</h4>
+                        <p class="card-text">Filtrez les livres par ville et trouvez des échanges près de chez vous</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-hand-holding-heart fa-3x text-danger"></i>
+                        </div>
+                        <h4 class="card-title">❤️ 100% Solidaire</h4>
+                        <p class="card-text">Une communauté d'entraide entre élèves pour réduire les coûts et l'impact écologique</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h3 class="display-4 fw-bold text-primary">50+</h3>
+                <p class="lead">Livres disponibles</p>
+            </div>
+            <div class="col-md-3">
+                <h3 class="display-4 fw-bold text-success">10+</h3>
+                <p class="lead">Villes couvertes</p>
+            </div>
+            <div class="col-md-3">
+                <h3 class="display-4 fw-bold text-warning">100+</h3>
+                <p class="lead">Élèves satisfaits</p>
+            </div>
+            <div class="col-md-3">
+                <h3 class="display-4 fw-bold text-info">200+</h3>
+                <p class="lead">Échanges réalisés</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">Prêt à rejoindre l'aventure ?</h2>
+        <p class="lead mb-4">Inscrivez-vous dès maintenant et commencez à échanger vos livres scolaires</p>
+        <a href="{{ path('app_livre_index') }}" class="btn btn-primary btn-lg">
+            Commencer maintenant 🚀
+        </a>
+    </div>
+</section>
+{% endblock %}

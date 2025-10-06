@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livres disponibles - Librairie Scolaire{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="display-5 fw-bold text-primary">
+                        <i class="fas fa-book-open me-2"></i>Livres disponibles
+                    </h1>
+                    <p class="lead text-muted">Découvrez tous les livres scolaires partagés par la communauté</p>
+                </div>
+                <a href="{{ path('app_livre_new') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus me-2"></i>Ajouter un livre
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {# FILTRE PAR VILLE - Version améliorée #}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">
+                <i class="fas fa-filter me-2"></i>Filtrer par ville
+            </h5>
+            <form method="get" action="{{ path('app_livre_index') }}" class="row g-3 align-items-end">
+                <div class="col-md-6">
+                    <label for="ville" class="form-label fw-bold">Sélectionnez une ville :</label>
+                    <select name="ville" id="ville" class="form-select" onchange="this.form.submit()">
+                        <option value="">🌍 Toutes les villes</option>
+                        {% for ville in villes %}
+                            <option value="{{ ville }}" {{ ville == ville_selected ? 'selected' : '' }}>
+                                📍 {{ ville }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    {% if ville_selected %}
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary fs-6 me-3">
+                                📍 Filtre actif : {{ ville_selected }}
+                            </span>
+                            <a href="{{ path('app_livre_index') }}" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-times me-1"></i>Effacer
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {# LISTE DES LIVRES - Version améliorée #}
+    {% if livres|length > 0 %}
+        <div class="row g-4">
+            {% for livre in livres %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 livre-card">
+                        <div class="card-header bg-gradient text-white">
+                            <h5 class="card-title mb-0">{{ livre.titre }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <span class="badge bg-primary mb-2">
+                                    <i class="fas fa-graduation-cap me-1"></i>{{ livre.classe }}
+                                </span>
+                                <span class="badge bg-success mb-2">
+                                    <i class="fas fa-star me-1"></i>{{ livre.etat }}
+                                </span>
+                                <span class="badge bg-info">
+                                    <i class="fas fa-map-marker-alt me-1"></i>{{ livre.ville }}
+                                </span>
+                            </div>
+                            <p class="text-muted small">
+                                <i class="fas fa-info-circle me-1"></i>
+                                ID: {{ livre.id }} • Disponible pour prêt/don
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex gap-2">
+                                <a href="{{ path('app_livre_show', {'id': livre.id}) }}" 
+                                   class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fas fa-eye me-1"></i>Voir
+                                </a>
+                                <a href="{{ path('app_livre_edit', {'id': livre.id}) }}" 
+                                   class="btn btn-outline-warning btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <div class="empty-state">
+                <i class="fas fa-book fa-4x text-muted mb-3"></i>
+                <h3 class="text-muted">Aucun livre trouvé</h3>
+                <p class="text-muted mb-4">
+                    {% if ville_selected %}
+                        Aucun livre disponible dans la ville "{{ ville_selected }}". 
+                        Essayez une autre ville ou <a href="{{ path('app_livre_index') }}">affichez tous les livres</a>.
+                    {% else %}
+                        Aucun livre n'a été partagé pour le moment. Soyez le premier !
+                    {% endif %}
+                </p>
+                <a href="{{ path('app_livre_new') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus me-2"></i>Ajouter le premier livre
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.livre-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.livre-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.bg-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+</style>
+{% endblock %}
