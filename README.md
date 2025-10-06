@@ -7,7 +7,7 @@
 
 <div align="center">
   
-  ![Capture d'écran de l'application](acceuil.png)
+  ![Capture d'écran de l'application](aceuil.png)
   
   *✨ Interface moderne et responsive de la plateforme*
   
